@@ -4,7 +4,7 @@
         <div class="cart-container">
             <div class="cart-list">
                 <div class="cart-list-item">
-                    <img :src="shoppingCartItems[0].image" :alt="shoppingCartItems.productName" class="product-image">
+                    <img :src="shoppingCartItems[0].image" :alt="shoppingCartItems[0].productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[0].productName }}</h2>
@@ -96,8 +96,8 @@
             </div>
             <div class="order-summary">
                 <h2>Order summary</h2>
-                <button class="toggle-details-button" @click="hideDetails = !hideDetails">Hide Details</button>
-                <div class="">
+                <button class="toggle-details-button" @click="hideDetails = !hideDetails">{{ hideDetails ? 'Show Details' : 'Hide Details' }}</button>
+                <div :class="{'hide-order-details': hideDetails}">
                     <div class="summary-item">
                         <span>Subtotal</span>
                         <span>$13900</span>
@@ -123,6 +123,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
 let username = "Harry";
 let shoppingCartItems = [
     {
@@ -167,7 +168,7 @@ let shoppingCartItems = [
     }
 ]
 
-let hideDetails = ref(false)
+let hideDetails = ref(false);
 </script>
 
 <style scoped>
