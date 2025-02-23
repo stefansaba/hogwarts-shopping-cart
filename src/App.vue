@@ -4,7 +4,7 @@
         <div class="cart-container">
             <div class="cart-list">
                 <div class="cart-list-item">
-                    <img src="@/assets/img/DragonLiver.png" alt="Dragon Liver" class="product-image">
+                    <img :src="shoppingCartItems[0].image" :alt="shoppingCartItems.productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[0].productName }}</h2>
@@ -14,7 +14,7 @@
                         <div class="item-actions">
                             <div class="quantity-selector">
                                 <button class="quantity-change-button">−</button>
-                                <input type="text" class="quantity-input" value="3" aria-label="quantity">
+                                <input type="text" class="quantity-input" :value="shoppingCartItems[0].quantity" aria-label="quantity">
                                 <button class="quantity-change-button">+</button>
                             </div>
                             <button class="remove-item">✕</button>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="cart-list-item">
-                    <img src="@/assets/img/GoldenSnitch.png" alt="Golden Snitch" class="product-image">
+                    <img :src="shoppingCartItems[1].image" :alt="shoppingCartItems[1].productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[1].productName }}</h2>
@@ -32,7 +32,7 @@
                         <div class="item-actions">
                             <div class="quantity-selector">
                                 <button class="quantity-change-button">−</button>
-                                <input type="text" class="quantity-input" value="2" aria-label="quantity">
+                                <input type="text" class="quantity-input" :value="shoppingCartItems[1].quantity" aria-label="quantity">
                                 <button class="quantity-change-button">+</button>
                             </div>
                             <button class="remove-item">✕</button>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="cart-list-item">
-                    <img src="@/assets/img/UnicornTailHair.png" alt="Unicorn Tail Hair" class="product-image">
+                    <img :src="shoppingCartItems[2].image" :alt="shoppingCartItems[2].productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[2].productName }}</h2>
@@ -50,7 +50,7 @@
                         <div class="item-actions">
                             <div class="quantity-selector">
                                 <button class="quantity-change-button">−</button>
-                                <input type="text" class="quantity-input" value="1" aria-label="quantity">
+                                <input type="text" class="quantity-input" :value="shoppingCartItems[2].quantity" aria-label="quantity">
                                 <button class="quantity-change-button">+</button>
                             </div>
                             <button class="remove-item">✕</button>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="cart-list-item">
-                    <img src="@/assets/img/Wand.jpg" alt="Wand" class="product-image">
+                    <img :src="shoppingCartItems[3].image" :alt="shoppingCartItems[3].productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[3].productName }}</h2>
@@ -68,7 +68,7 @@
                         <div class="item-actions">
                             <div class="quantity-selector">
                                 <button class="quantity-change-button">−</button>
-                                <input type="text" class="quantity-input" value="1" aria-label="quantity">
+                                <input type="text" class="quantity-input" :value="shoppingCartItems[3].quantity" aria-label="quantity">
                                 <button class="quantity-change-button">+</button>
                             </div>
                             <button class="remove-item">✕</button>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="cart-list-item">
-                    <img src="@/assets/img/Nimbus2000.jpg" alt="Nimbus 2000" class="product-image">
+                    <img :src="shoppingCartItems[4].image" :alt="shoppingCartItems[4].productName" class="product-image">
                     <div class="item-details-with-actions">
                         <div class="item-details">
                             <h2>{{ shoppingCartItems[4].productName }}</h2>
@@ -86,7 +86,7 @@
                         <div class="item-actions">
                             <div class="quantity-selector">
                                 <button class="quantity-change-button">−</button>
-                                <input type="text" class="quantity-input" value="1" aria-label="quantity">
+                                <input type="text" class="quantity-input" :value="shoppingCartItems[4].quantity" aria-label="quantity">
                                 <button class="quantity-change-button">+</button>
                             </div>
                             <button class="remove-item">✕</button>
@@ -96,7 +96,7 @@
             </div>
             <div class="order-summary">
                 <h2>Order summary</h2>
-                <button class="toggle-details-button">Hide Details</button>
+                <button class="toggle-details-button" @click="hideDetails = !hideDetails">Hide Details</button>
                 <div class="">
                     <div class="summary-item">
                         <span>Subtotal</span>
@@ -166,6 +166,8 @@ let shoppingCartItems = [
         image: "src/assets/img/Nimbus2000.jpg"
     }
 ]
+
+let hideDetails = ref(false)
 </script>
 
 <style scoped>
